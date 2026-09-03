@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Staff dashboard — ABC Tutoring</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css" />
+
+<!-- PostHog analytics -->
+<script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog && window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}p||((p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",p.onerror=function(){p=null},(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r));var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagResult isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+    posthog.init('phc_zxxuDMYx4rX93AA6RFzjvgEHXUmBMe9n8ZpTk2k6E65x', {
+        api_host: 'https://us.i.posthog.com',
+        defaults: '2026-05-30',
+    })
+</script>
+</head>
+<body>
+
+<div class="gate" id="gate">
+  <div class="gate-card">
+    <h2>Staff dashboard</h2>
+    <p>This page is for the ABC Tutoring owner only.</p>
+    <form id="gateForm">
+      <div class="field">
+        <label for="gatePassword">Password</label>
+        <input type="password" id="gatePassword" required />
+      </div>
+      <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">Enter</button>
+      <p class="gate-error" id="gateError">That password isn't right — try again.</p>
+    </form>
+  </div>
+</div>
+
+<div id="dashboard" style="display:none;">
+  <header class="site-header">
+    <div class="container">
+      <a class="wordmark" href="index.html">ABC <span>Tutoring</span></a>
+      <a href="index.html" class="btn btn-secondary btn-small">Back to site</a>
+    </div>
+  </header>
+
+  <main class="section container">
+    <div class="section-head">
+      <h2>How the site's doing</h2>
+      <p>Based on activity in this browser. See the note below for full, all-visitor analytics.</p>
+    </div>
+
+    <div class="dash-grid">
+      <div class="stat-card">
+        <div class="stat-label">Most-viewed tutor</div>
+        <div class="stat-value" id="statTopTutor" style="font-size:1.4rem;">—</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Views vs. bookings</div>
+        <div class="stat-value" id="statRatio" style="font-size:1.3rem;">—</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">View → booking rate</div>
+        <div class="stat-value" id="statConversion">—</div>
+      </div>
+    </div>
+
+    <div class="stat-card" style="margin-bottom:20px;">
+      <div class="stat-label" style="margin-bottom:16px;">Where bookings came from</div>
+      <div id="heardAboutBars"></div>
+    </div>
+
+    <div class="stat-card" style="margin-bottom:28px;">
+      <div class="stat-label" style="margin-bottom:4px;">Recent bookings</div>
+      <div id="bookingsTableWrap"></div>
+    </div>
+
+    <div class="note-box">
+      <strong>Heads up:</strong> the numbers above only reflect bookings and clicks made
+      on this device — this is a concept demo with no shared database. Every visitor's
+      page views, clicks, and bookings are also sent to your real PostHog project (the
+      one behind key <code>phc_zxxu…6E65x</code>), so once real traffic arrives you can
+      see site-wide numbers — across every visitor, any device — by logging into
+      <a href="https://us.posthog.com" target="_blank" rel="noopener">posthog.com</a>
+      and building an Insight from the <code>tutor_card_viewed</code> and
+      <code>booking_submitted</code> events. Details in README.md.
+    </div>
+  </main>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/analytics.js"></script>
+</body>
+</html>
